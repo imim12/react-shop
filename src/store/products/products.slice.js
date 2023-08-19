@@ -4,10 +4,15 @@ import axios from "axios";
 
 export const fetchProducts = createAsyncThunk(   //2. CardList.jsx에서 여기로 옴. 비동기 호출 실행. 이때 진행 상태에 따라 밑의 extraReducers로 값이 들어감??
     "products/fetchProducts",
-    async (thunkAPI) => {
+    async (category, thunkAPI) => {
         console.log(thunkAPI);
         try{
-            const response = await axios.get("https://fakestoreapi.com/products")
+            let response;
+            if(category){  //각 카테고리를 눌렀으면 카테고리에 맞는 아이템만 가져옴
+                response = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
+            }else{
+                response = await axios.get("https://fakestoreapi.com/products");
+            }          
             console.log("response",response)
             return response.data;
         }catch(error){
