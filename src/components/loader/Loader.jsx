@@ -1,8 +1,15 @@
 import React from 'react'
+import styles from './Loader.module.scss'
+
 
 const Loader = () => {
-  return (
-    <div>Loader</div>
+  return (  //로딩이미지
+    <div className={styles.lds_ring}>  
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   )
 }
 
