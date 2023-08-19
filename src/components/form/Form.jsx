@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 
 const Form = ({title, getDataForm, firebaseError}) => {
 
-  const { register, handleSubmit, formState: {errors}, reset } = useForm({ mode : 'onChange'})
+  const { register, handleSubmit, formState: {errors}, reset } = useForm({ mode : 'onChange'})  //정합성 체크용
 
   const onSubmit = ({email, password}) => {
     getDataForm(email, password);  //email과 pasword 값을 받아서 SignUp.jsx에 있는 handleSignupAndLogin()으로 넘어가게 됨
