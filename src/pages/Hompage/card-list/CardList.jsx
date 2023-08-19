@@ -4,12 +4,13 @@ import styles from './CardList.module.scss'
 import { fetchProducts } from '../../../store/products/products.slice'
 import CardItem from './card-item/CardItem'
 import { useSelector } from 'react-redux'
+import CardSkeleton from '../card-skeleton/CardSkeleton'
 
 const CardList = () => {
 
     const dispatch = useAppDispatch()
 
-    const {products} = useAppSelector(state => state.productsSlice)  //3. 비동기 호출이 완료되거나 오류가 난 후 state값 가져옴
+    const {products, isLoading} = useAppSelector(state => state.productsSlice)  //3. 비동기 호출이 완료되거나 오류가 난 후 state값 가져옴
     const category = useAppSelector(state => state.categoriesSlice)  //3. 비동기 호출이 완료되거나 오류가 난 후 state값 가져옴
 
     //console.log("products?????>",products);
@@ -19,11 +20,12 @@ const CardList = () => {
         
     }, [category])
     
+    if(isLoading) return <CardSkeleton/>;  //아직 로딩중일때 빈화면 대신 CardSkeleton 컴포넌트 내용 보이기(=4개의 회색 네모박스)
 
-  return (
-    <ul className={styles.card_list}>
-        {products && products.map( product => <CardItem key={product.id} item={product}/>) }
-    </ul>
+    return (
+        <ul className={styles.card_list}>
+            {products && products.map( product => <CardItem key={product.id} item={product}/>) }
+        </ul>
   )
 }
 
