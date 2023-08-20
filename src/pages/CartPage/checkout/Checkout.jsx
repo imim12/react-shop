@@ -30,7 +30,7 @@ const Checkout = () => {
             {isAuth ? 
                 <button
                     className={styles.checkout_button}
-                    onClick={()=>sendOrder()}
+                    onClick={sendOrder}
                 >
                     계산하기
                 </button>
