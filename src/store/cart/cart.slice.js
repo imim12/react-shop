@@ -1,4 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const postOrder = createAsyncThunk(
+    "cart/postOrder",
+    async(order, thunkAPI) => {
+        try {
+            await axios.post(
+                "https://64e1bddcab00373588185df2.mockapi.io/orders",
+                order
+            )
+            thunkAPI.dispatch(sendOrder())  //여기서 sendOrder() 사용하려면 제일 밑 코드부분에서 cartSlice에 있는 sendOrder()를 export로 내보내줘야함
+        } catch (error) {
+            return thunkAPI.rejectWithValue("Error sending order");
+        }
+    }
+)
+
+
 
 const initialState = {
     products: localStorage.getItem("cartProducts") ? 
@@ -62,6 +80,10 @@ export const cartSlice = createSlice({
                 0
             )
             return state;
+        },
+        sendOrder : (state) => {
+            state.products = [];   //주문을 보냈으니 장바구니를 비워주기 위해 빈 배열 할당
+            localStorage.setItem('cartProducts',JSON.stringify(state.products))  //마찬가지로 localStorage에도 없애줌
         }
         
 
@@ -75,7 +97,8 @@ export const {
     deleteFromCart,
     incrementProduct,
     decrementProduct,
-    getTotalPrice
+    getTotalPrice,
+    sendOrder
 } = cartSlice.actions;
 
 export default cartSlice.reducer
