@@ -5,6 +5,7 @@ import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
 import app from '../../../firebase';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../../store/user/user.slice';
+import { setUserId } from '../../../store/cart/cart.slice';
 
 const SignUp = () => {
 
@@ -23,6 +24,7 @@ const SignUp = () => {
         token: userCredential.user.refreshToken,
         id: userCredential.user.uid,
        }))
+      dispatch(setUserId(userCredential.user.uid))  //id 로컬스토리지에 저장
       navigate('/');   //로그인 됐으면 메인페이지로 보내줌
     })   
     .catch(error =>{
