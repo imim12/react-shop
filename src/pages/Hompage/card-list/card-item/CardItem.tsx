@@ -3,8 +3,13 @@ import styles from './CardItem.module.scss'
 import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux'
 import { addToCart } from '../../../../store/cart/cart.slice'
+import { IProduct } from '../../../../store/products/products.type'
 
-const CardItem = ({item}) => {
+type CardItemProps = {
+  item : IProduct
+}
+
+const CardItem = ({item}:CardItemProps) => {
 
   const {products} =  useAppSelector(state=>state.cartSlice);
   //console.log("products>>>", products)

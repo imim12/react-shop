@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './FiltersCategory.module.scss'
-import CategoryTab from './Category-tab/CategoryTab'
+import CategoryTab from './category-tab/CategoryTab'
 import { CategoriesName } from '../../../store/categories/categories.type'
 
 const FiltersCategory = () => {

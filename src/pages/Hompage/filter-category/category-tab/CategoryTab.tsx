@@ -2,8 +2,14 @@ import React from 'react'
 import styles from './CategoryTab.module.scss';
 import { setActiveCategory } from '../../../../store/categories/categories.slice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+import { CategoriesName } from '../../../../store/categories/categories.type';
 
-const CategoryTab = ({text, categoryName}) => {
+type CategoryTabProps = {
+    text: string;
+    categoryName : CategoriesName
+}
+
+const CategoryTab = ({text, categoryName}:CategoryTabProps) => {
 
      const dispatch =  useAppDispatch();
 
