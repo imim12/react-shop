@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../../../../../hooks/redux'
 import { deleteFromCart } from '../../../../../../store/cart/cart.slice'
 import {AiOutlineDelete} from 'react-icons/ai'
+import { IProduct } from '../../../../../../store/products/products.type'
 
-const NavCartItem = ({item}) => {
+type NavCartItemProps = {
+  item: IProduct
+}
+
+const NavCartItem = ({item}:NavCartItemProps) => {
 
   const dispatch = useAppDispatch();
 

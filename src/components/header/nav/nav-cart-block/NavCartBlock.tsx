@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 const NavCartBlock = () => {
 
-  const {totalPrice, product} = useAppSelector((state)=>state.cartSlice);
+  const {totalPrice, products } = useAppSelector((state)=>state.cartSlice);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getTotalPrice(product));
+    dispatch(getTotalPrice());
   
-  }, [])
+  }, [products])
   
 
   return (
