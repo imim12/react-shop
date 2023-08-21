@@ -6,7 +6,7 @@ import DetailPage from './pages/DetailPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
 import Register from './pages/RegisterPage'
-import Order from './pages/OrderPAge'
+import Order from './pages/OrderPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {

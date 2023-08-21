@@ -14,4 +14,5 @@ export interface IProduct {
     rating:IRating;
     quantity:number;
     total:number;
+    image:string;
 }
