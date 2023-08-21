@@ -4,8 +4,13 @@ import { decrementProduct, deleteFromCart, incrementProduct } from '../../../../
 import styles from './CartItem.module.scss'
 import { Link } from 'react-router-dom';
 import {AiOutlineDelete} from 'react-icons/ai';
+import { IProduct } from '../../../../store/products/products.type';
 
-const CartItem = ({item}) => {
+type CartItemProps = {
+    item : IProduct;
+}
+
+const CartItem = ({item}:CartItemProps) => {
 
     const dispatch = useAppDispatch();
 
