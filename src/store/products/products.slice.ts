@@ -1,27 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
+import { IProduct } from "./products.type";
 
 
 export const fetchProducts = createAsyncThunk(   //2. CardList.jsx에서 여기로 옴. 비동기 호출 실행. 이때 진행 상태에 따라 밑의 extraReducers로 값이 들어감??
     "products/fetchProducts",
-    async (category, thunkAPI) => {
+    async (category:string, thunkAPI) => {
         console.log(thunkAPI);
         try{
             let response;
             if(category){  //각 카테고리를 눌렀으면 카테고리에 맞는 아이템만 가져옴
-                response = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
+                response = await axios.get<IProduct[]>(`https://fakestoreapi.com/products/category/${category}`);
             }else{
-                response = await axios.get("https://fakestoreapi.com/products");
+                response = await axios.get<IProduct[]>("https://fakestoreapi.com/products");
             }          
             console.log("response",response)
             return response.data;
         }catch(error){
-            thunkAPI.rejectWithValue("Error loading products");   //데이터를 가져오다 오류가 났으면 rejectWithValue()로 인해 인자값이 fetchProducts.rejected의 action.payload에 들어가게 됨
+            return thunkAPI.rejectWithValue("Error loading products");   //데이터를 가져오다 오류가 났으면 rejectWithValue()로 인해 인자값이 fetchProducts.rejected의 action.payload에 들어가게 됨
         }
     }
 )
 
-const initialState = {
+type ProductsType = {
+    products: IProduct[];
+    isLoading : boolean;
+    error : string;
+}
+
+const initialState: ProductsType = {
     products : [],
     isLoading : false,
     error : ""
@@ -43,7 +50,7 @@ export const productsSlice = createSlice({
         })
         .addCase(fetchProducts.rejected, (state, action)=>{  //가져오지 못하고 종료됐을때
             state.isLoading = false;
-            state.error = action.payload;
+            state.error = action.payload as string;
         })
     }
 })
