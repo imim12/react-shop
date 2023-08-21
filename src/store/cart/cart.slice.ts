@@ -44,7 +44,7 @@ export const cartSlice = createSlice({
             localStorage.setItem('userId', JSON.stringify(state.userId));
         },
         addToCart : (state, action:PayloadAction<IProduct>) =>{
-            state.products.push({  //원래 있던 products값(=...action.payload)에 받아온 값을 넣어 하나를 더함
+            state.products.push({  //원래 있던 카트안의 상품들에게 push로 상품 하나 추가. ...action.payload는 카트에 넣을 상품 하나의 정보들이 담긴 객체라 그 정보들을 전개연산자로 전개
                 ...action.payload,    
                 quantity: 1,
                 total : action.payload.price
