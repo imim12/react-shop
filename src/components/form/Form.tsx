@@ -1,12 +1,24 @@
-import React from 'react'
+import React, {FC} from 'react'
 import styles from './Form.module.scss'
-import { useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
-const Form = ({title, getDataForm, firebaseError}) => {
 
-  const { register, handleSubmit, formState: {errors}, reset } = useForm({ mode : 'onChange'})  //정합성 체크용
+type FormProps = {  //interface 써도 됨
+  title: string;
+  getDataForm : (email:string, password:string) => void;  //리턴하는게 없어서 void
+  firebaseError: string;
+}
 
-  const onSubmit = ({email, password}) => {
+type Inputs = {
+  email: string;
+  password: string;
+}
+
+const Form : FC<FormProps> = ({title, getDataForm, firebaseError}) => {   //FC<FormProps> 해도 되고 ({title, getDataForm, firebaseError}: FormProps)  해도 되고
+
+  const { register, handleSubmit, formState: {errors}, reset } = useForm<Inputs>({ mode : 'onChange'})  //정합성 체크용
+
+  const onSubmit:SubmitHandler<FieldValues> = ({email, password}) => {   //SubmitHandler<FieldValues> : react-hook-form에서 제공
     getDataForm(email, password);  //email과 pasword 값을 받아서 SignUp.jsx에 있는 handleSignupAndLogin()으로 넘어가게 됨
     reset();  //input text에 있는 값 초기화
   }
