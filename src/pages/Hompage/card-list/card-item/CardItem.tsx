@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './CardItem.module.scss'
 import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux'
 import { addToCart } from '../../../../store/cart/cart.slice'
 import { IProduct } from '../../../../store/products/products.type'
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
+import { addToWishList, deleteWishList } from '../../../../store/wishList/wishList.slice'
 
 type CardItemProps = {
   item : IProduct
@@ -12,6 +14,7 @@ type CardItemProps = {
 const CardItem = ({item}:CardItemProps) => {
 
   const {products} =  useAppSelector(state=>state.cartSlice);
+  const {wishProducts} = useAppSelector(state=>state.wishListSlice);
   //console.log("products>>>", products)
 
   const productMatching = products.some((product) => product.id === item.id);   
@@ -21,8 +24,36 @@ const CardItem = ({item}:CardItemProps) => {
     dispatch(addToCart(item));
   }
 
+  const wishProductMatching = wishProducts.some((product) => product.id === item.id);   
+
+  const addItemToWishList = () => {
+    dispatch(addToWishList(item));
+  }
+
+  const deleteItemToWishList = () => {
+    dispatch(deleteWishList(item.id));
+    console.log("deleteItemToWishList",wishProducts)
+  }
+
+  // useEffect(() => {
+  // }, [wishProducts])
+
+
   return (
     <li className={styles.card_item}>
+      <div className={styles.wish_list}>
+
+        {wishProductMatching ?  
+          <button className={styles.wish} onClick={()=> wishProductMatching && deleteItemToWishList()}>
+            <AiFillStar color="#ffa704"/>          
+          </button>       
+          : 
+          <button className={styles.wish} onClick={()=> !wishProductMatching && addItemToWishList()}>
+            <AiOutlineStar color="#ffa704"  />  
+          </button>
+        }
+
+      </div>
       <Link to={`/product/${item.id}`}>
         <img
           src={item.image}
@@ -31,6 +62,7 @@ const CardItem = ({item}:CardItemProps) => {
           alt="product card"
         />
       </Link>
+
       <h5>{item.title.substring(0,15)}...</h5>
       <div>
         <button

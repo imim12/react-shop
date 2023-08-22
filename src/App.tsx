@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import Register from './pages/RegisterPage'
 import Order from './pages/OrderPage'
 import NotFoundPage from './pages/NotFoundPage'
+import WishListPage from './pages/WishPage'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="register" element={<Register/>}/>
           <Route path="order" element={<Order/>}/>
           <Route path="*" element={<NotFoundPage/>}/>
+          <Route path="wishList" element={<WishListPage/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

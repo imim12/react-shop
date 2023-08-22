@@ -8,6 +8,7 @@
     padding: 30px;
     border: 1px solid #b6b2b2;
     transition: transform 0.2s ease-in-out;
+    position: relative;
 
     &:hover {
         transform: translateY(-5px);
@@ -66,6 +67,7 @@
         }
     }
 
+
     @media (min-width: 480px) {
         width: 50%;
     }
@@ -112,3 +114,27 @@
         }
     }
 }
+
+.wish_list{
+    position: absolute;
+    z-index: 3;
+    left: 10px;
+    top: 15px;
+    //font-size: 40px;
+
+    button {
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        font-size: 40px;
+
+        &:hover {
+            color: #ffff;
+            background: none;
+        }
+    }
+}
+

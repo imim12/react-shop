@@ -10,6 +10,7 @@ import { removeUser } from '../../../store/user/user.slice';
 import { removeUserId } from '../../../store/cart/cart.slice';
 import app from '../../../firebase'
 import NavCartBlock from './nav-cart-block/NavCartBlock';
+import { BsStarFill } from 'react-icons/bs';
 
 const Nav = () => {
 
@@ -33,6 +34,14 @@ const Nav = () => {
     return (
     <nav className={styles.nav}>
         <ul>
+            <li>
+                <div className={styles.counter}>
+                    <Link to={"/wishList"}>
+                        {" "}
+                        <BsStarFill color="#ffa704" title="위시리스트"/>
+                    </Link>
+                </div>
+            </li>
             <li>
                 <div className={styles.counter}>
                     <Link to={"/cart"}>
