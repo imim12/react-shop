@@ -39,8 +39,8 @@ const DetailPage = () => {
         </div>
         <div className={styles.card_description}>
           <h3>{product.category}</h3>
-          <h3>{product.title}</h3>
-          <h4>$ {product.price}</h4>
+          <h4>{product.title}</h4>
+          <h4>${product.price}</h4>
           <p>{product.description}</p>
           <div>
             <button 

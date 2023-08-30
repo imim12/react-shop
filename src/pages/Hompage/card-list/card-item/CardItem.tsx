@@ -71,7 +71,7 @@ const CardItem = ({item}:CardItemProps) => {
         >
           {productMatching ? "장바구니에 담긴 제품" : "장바구니에 담기"}
         </button>
-        <p>{item.price}</p>
+        <p>${item.price}</p>
       </div>
     </li>
   )
