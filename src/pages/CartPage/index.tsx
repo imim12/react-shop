@@ -15,7 +15,6 @@ const CartPage = () => {
         <CartEmpty title="장바구니"/>
       ) : (
         <div className='container'>
-          <h1>장바구니</h1>
           <CartList/>
           <Checkout/>
         </div>
