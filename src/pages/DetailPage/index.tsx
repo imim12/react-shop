@@ -49,7 +49,7 @@ const DetailPage = () => {
             >
               {productMatching  ? "장바구니에 담긴 제품" : "장바구니에 담기" }
             </button>
-            <Link to="./cart">장바구니로 이동</Link>
+            <Link to="../../cart">장바구니로 이동</Link>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export const postOrder = createAsyncThunk(
                 "https://64e1bddcab00373588185df2.mockapi.io/orders",
                 order
             )
-            thunkAPI.dispatch(sendOrder())  //여기서 sendOrder() 사용하려면 제일 밑 코드부분에서 cartSlice에 있는 sendOrder()를 export로 내보내줘야함
+            thunkAPI.dispatch(sendOrder()) 
         } catch (error) {
             return thunkAPI.rejectWithValue("Error sending order");
         }
