@@ -6,7 +6,7 @@ export const fetchOrder = createAsyncThunk(
     "order/fetchOrder",
     async (userId:string, thunkAPI) =>{
         try {
-            const response = await axios.get<IOrder[]>(`https://64e1bddcab00373588185df2.mockapi.io/orders?search=${userId}`)  //search는 따로 우리가 설정한게 아닌 검색하려면 써야하는 제공해주는 속성인건가??
+            const response = await axios.get<IOrder[]>(`https://64e1bddcab00373588185df2.mockapi.io/orders?search=${userId}`) 
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue("Error receiving order")
