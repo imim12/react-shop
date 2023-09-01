@@ -8,7 +8,7 @@ const OrderPage = () => {
 
   const {isAuth} = useAuth();
 
-  if(!isAuth) return <Navigate to="/"/>  //로그인한 사용자가 아니면 메인페이지로 리턴
+  //if(!isAuth) return <Navigate to="/"/>  //로그인한 사용자가 아니면 메인페이지로 리턴
 
   return (
     <div className='page'>

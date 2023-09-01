@@ -5,6 +5,7 @@ import { fetchOrder } from '../../../store/order/order.slice';
 import CartEmpty from '../../../components/cart-empty/CartEmpty';
 import styles from './OrdersList.module.scss'
 import OrderItem from './order-item/OrderItem';
+import LoginRequest from '../../../components/loginRequest/LoginRequest';
 
 
 
@@ -17,6 +18,10 @@ const OrdersList = () => {
     useEffect(()=>{
         dispatch(fetchOrder(id));  //1. 유저 id에 맞는 주문 목록들을 가져오는 비동기함수 호출
     },[id])
+
+    if(!id){
+        return<LoginRequest/>
+    }
 
     if(!order.length){
         return <CartEmpty title="주문내역"/>
