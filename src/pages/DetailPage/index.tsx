@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks/redux';
 import { fetchProduct } from '../../store/products/product.slice';
-import styles from './Detailpage.module.scss'
+import styles from './DetailPage.module.scss'
 import Loader from '../../components/loader/Loader';
 import { addToCart } from '../../store/cart/cart.slice';
 
@@ -42,7 +42,7 @@ const DetailPage = () => {
           <h4>{product.title}</h4>
           <h4>${product.price}</h4>
           <p>{product.description}</p>
-          <div>
+          <div> 
             <button 
               disabled={productMatching}
               onClick = { () => !productMatching && addItemToCart()}
