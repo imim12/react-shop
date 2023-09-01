@@ -11,6 +11,7 @@ const WishListPage = () => {
   return (
     <div className='page'>
       <div className='container'>
+      <h1>위시리스트</h1>
         {!wishProducts.length ? (
           <div className={styles.wishList}>
             <AiFillStar color="#ffa704" font-size='200px'/>     
@@ -18,7 +19,6 @@ const WishListPage = () => {
           </div>
         ) : (
           <div>
-            <h1>위시리스트</h1>
             <WishList/>
           </div>
         ) 

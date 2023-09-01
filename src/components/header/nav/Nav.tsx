@@ -11,6 +11,7 @@ import { removeUserId } from '../../../store/cart/cart.slice';
 import app from '../../../firebase'
 import NavCartBlock from './nav-cart-block/NavCartBlock';
 import { BsStarFill } from 'react-icons/bs';
+import { RiQuestionAnswerFill } from 'react-icons/ri'
 
 const Nav = () => {
 
@@ -34,6 +35,14 @@ const Nav = () => {
     return (
     <nav className={styles.nav}>
         <ul>
+            {/* <li>
+                <div className={styles.counter}>
+                    <Link to={"/board"}>
+                        {" "}
+                        <RiQuestionAnswerFill title="게시판"/>
+                    </Link>
+                </div>
+            </li> */}
             <li>
                 <div className={styles.counter}>
                     <Link to={"/wishList"}>
@@ -46,7 +55,7 @@ const Nav = () => {
                 <div className={styles.counter}>
                     <Link to={"/cart"}>
                         {" "}
-                        <FiShoppingCart/>
+                        <FiShoppingCart title="장바구니"/>
                     </Link>
                     {products.length > 0 && <b>{products.length}</b>}
                     {products.length > 0 && 
