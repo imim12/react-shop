@@ -14,7 +14,7 @@ const WishListPage = () => {
       <h1>위시리스트</h1>
         {!wishProducts.length ? (
           <div className={styles.wishList}>
-            <AiFillStar color="#ffa704" font-size='200px'/>     
+            <AiFillStar color="#ffa704" font-size='300px'/>     
             <h1>위시 리스트가 비어있습니다.</h1>
           </div>
         ) : (
